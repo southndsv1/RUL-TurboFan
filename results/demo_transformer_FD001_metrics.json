@@ -1,0 +1,11 @@
+{
+  "RMSE": 12.84,
+  "MAE": 10.23,
+  "MAPE": 18.45,
+  "R2": 0.896,
+  "NASA_Score": 267.5,
+  "mean_error": -0.34,
+  "std_error": 12.91,
+  "late_predictions_pct": 48.2,
+  "early_predictions_pct": 51.8
+}
