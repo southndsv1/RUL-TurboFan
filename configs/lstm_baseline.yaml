@@ -1,0 +1,47 @@
+# LSTM Baseline Configuration
+# Bidirectional LSTM with attention mechanism
+
+# Data Configuration
+data:
+  dataset: 'FD001'
+  data_path: '../data/CMAPSS'
+  sequence_length: 30
+  max_rul: 125
+  val_split: 0.2
+  stride: 1
+
+# Model Configuration
+model:
+  type: 'lstm_attention'
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.2
+  bidirectional: true
+
+# Training Configuration
+training:
+  epochs: 100
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  optimizer: 'adam'
+  loss: 'mse'
+
+# Scheduler
+scheduler:
+  use_scheduler: true
+  warmup_epochs: 3
+  min_lr: 0.000001
+
+# Early Stopping
+early_stopping:
+  enabled: true
+  patience: 20
+  min_delta: 0.0001
+
+# Paths
+paths:
+  checkpoint_dir: '../models'
+  results_dir: '../results'
+
+seed: 42
