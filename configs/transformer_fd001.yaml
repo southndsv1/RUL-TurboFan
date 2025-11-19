@@ -1,0 +1,64 @@
+# Transformer Model Configuration for FD001
+# State-of-the-art configuration for single operating condition dataset
+
+# Data Configuration
+data:
+  dataset: 'FD001'
+  data_path: '../data/CMAPSS'
+  sequence_length: 30
+  max_rul: 125
+  val_split: 0.2
+  stride: 1
+  normalize: 'z-score'
+
+# Model Configuration
+model:
+  type: 'transformer'
+  d_model: 128
+  nhead: 8
+  num_layers: 4
+  dim_feedforward: 512
+  dropout: 0.1
+  max_seq_len: 100
+
+# Training Configuration
+training:
+  epochs: 100
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  optimizer: 'adamw'
+  loss: 'asymmetric'
+  alpha: 0.6  # For asymmetric loss
+
+# Scheduler
+scheduler:
+  use_scheduler: true
+  warmup_epochs: 5
+  min_lr: 0.000001
+
+# Early Stopping
+early_stopping:
+  enabled: true
+  patience: 15
+  min_delta: 0.0001
+
+# Regularization
+regularization:
+  max_grad_norm: 1.0
+  dropout: 0.1
+
+# Paths
+paths:
+  checkpoint_dir: '../models'
+  results_dir: '../results'
+  log_dir: '../logs'
+
+# Hardware
+hardware:
+  use_amp: false  # Mixed precision training
+  num_workers: 4
+  pin_memory: true
+
+# Seed
+seed: 42
